@@ -1,0 +1,27 @@
+extends home
+block title
+    title reg
+block links
+    link(rel='stylesheet' type='text/css' href='../sass/reg-style.css')
+block content
+    .content
+        .image
+            img(src=image alt='no.')
+        .form-adjust
+            form(method='POST' action='/reg' enctype="multipart/form-data")
+                input(type='hidden', name='_csrf', value=csrf)
+                label Логин
+                input(type="text" id="login" name="login")
+                label Почта
+                input(type="text" name="mail")
+                label Пароль
+                input(type="password" name="password")
+                label Специализация
+                input(type="text" name="specialism")
+                label Пол
+                select(name="sex")
+                    option(value="male") Мужрской
+                    option(value="female") Женский
+                label Фото
+                input(type="file" name="image")
+                button(type="submit" value="Sign up") Sign Up

@@ -1,0 +1,23 @@
+body {
+  font-family: monospace;
+}
+
+.content .form-adjust {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+}
+.content .form-adjust form {
+  display: flex;
+  flex-direction: column;
+  min-width: 10em;
+}
+.content .form-adjust form label {
+  margin-top: 0.3em;
+}
+.content .form-adjust form button {
+  font-size: 0.7em;
+  margin-top: 0.3em;
+}
+
+/*# sourceMappingURL=reg-style.css.map */
