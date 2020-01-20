@@ -1,10 +1,10 @@
-const db = require('../config/database');
+const db = require('mongoose');
 const Schema = db.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new Schema({
-    email: {type: String, required: true},
-    login: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
+    login: {type: String, required: true, unique: true},
     specialism: {type: String, required: true},
     sex: {type: String, required: true},
     image: {type: String, required: true},

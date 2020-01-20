@@ -1,5 +1,6 @@
+/*
 const mongoose = require('mongoose');
-const URL = 'mongodb://localhost:27017/users';
+const URL = 'mongodb://localhost:27017/registration';
 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useNewUrlParser', true);
@@ -11,3 +12,4 @@ module.exports.connect = () => {
         mongoose.connect(URL)
     }
 };
+*/

@@ -1,10 +1,11 @@
-/*
-const passport = require("koa-passport");
 const User = require('../models/User');
-const LocalStrategy = require('passport-local');
+const passport = require('koa-passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+const options = {passReqToCallback: true};
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
@@ -13,29 +14,73 @@ passport.deserializeUser(async (id, done) => {
     })
 });
 
-passport.use('local.signup', new LocalStrategy({
-    usernameField: 'email',
+passport.use(new LocalStrategy({
+    usernameField: 'login',
     passwordField: 'password',
     passReqToCallback: true
-}, (req, login, password, done) => {
+}, (res, username, password, done) =>{
+    User.find({login: username}, (err, user) => {
+        return done(null, username);
+        /*
 
-
-    User.findOne({'login': login}, (err, user) => {
-        if (err) {
-            return done(err);
-        }
-        if (user){
-            return done(null, false, {message: 'Email is already in use'})
-        }
         let newUser = new User();
-        newUser.email = email;
-        newUser.password = newUser.encryptPassword(password);
+
+        newUser.login = req.request.body.login;
+        newUser.email = req.request.body.email;
+        newUser.specialism = req.request.body.specialism;
+        newUser.sex = req.request.body.sex;
+        newUser.image = "../public/uploads/" + req.request.body.login;
+
         newUser.save((err, newUser) => {
             if (err) {
+                console.log(err);
                 return done(err);
             }
             done(null, newUser)
+        });*/
+    });
+    return done(null, username);
+    /*let emptyFields = [];
+
+    for(let i in req.request.body){
+        if(req.request.body[i] === ''){
+            emptyFields.push("The " + i + " field is empty.")
+        }
+    }
+
+    if (typeof emptyFields !== 'undefined' && emptyFields.length > 0){
+        req.render('registration', {messages: emptyFields});
+        done(null);
+    } else{
+        User.findOne({'login': login}, (err, user) => {
+            if (err) {
+                console.log(err);
+                return done(err);
+            }
+            if (user) {
+                return done(null, false, {message: 'Login is already in use'})
+            }
+
+            let newUser = new User();
+
+            newUser.login = req.request.body.login;
+            newUser.email = req.request.body.email;
+            newUser.specialism = req.request.body.specialism;
+            newUser.sex = req.request.body.sex;
+            newUser.image = "../public/uploads/" + req.request.body.login;
+
+            newUser.save((err, newUser) => {
+                if (err) {
+                    console.log(err);
+                    return done(err);
+                }
+                done(null, newUser)
+            });
         })
-    })
+    }*/
 }));
-*/
+
+/*passport.use(new LocalStrategy(function(username, password, done) {
+    console.log(username, password, username);
+    done(null, true)
+}));*/
