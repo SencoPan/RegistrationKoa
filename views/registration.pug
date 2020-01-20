@@ -7,13 +7,17 @@ block content
     .content
         .image
             img(src=image alt='no.')
+        .error-messages
+            if(messages)
+                each message in messages
+                    .message
+                        | #{message}
         .form-adjust
             form(method='POST' action='/reg' enctype="multipart/form-data")
-                input(type='hidden', name='_csrf', value=csrf)
                 label Логин
                 input(type="text" id="login" name="login")
                 label Почта
-                input(type="text" name="mail")
+                input(type="text" name="email")
                 label Пароль
                 input(type="password" name="password")
                 label Специализация

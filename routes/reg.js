@@ -1,6 +1,6 @@
 const router = require('koa-router')();
 const multer = require('@koa/multer');
-const mongoDB = require('../config/database');
+const User = require('../models/User');
 
 const storage = multer.diskStorage({
     filename: function (req, file, cb) {
@@ -12,15 +12,35 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage: storage});
-
+router.get('/test', async ctx => {
+    ctx.render('home');
+});
 router.get('/reg', async ctx => {
     await ctx.render('registration');
 });
 
-router.post('/reg',
+router.post('/reg',  upload.single('image'),
     async (ctx, next) => {
         try{
-            console.dir(ctx.request);
+            let emptyFields = [];
+
+            for(let i in ctx.request.body){
+                if(ctx.request.body[i] === ''){
+                    emptyFields.push("The " + i + " field is empty.")
+                }
+            }
+
+            if (typeof emptyFields !== 'undefined' && emptyFields.length > 0){
+               await ctx.render('registration', {messages: emptyFields});
+            } else{
+                let newUser = new User();
+                newUser.login = ctx.request.body.login;
+                newUser.login = ctx.request.body.login;
+                newUser.login = ctx.request.body.login;
+                newUser.login = ctx.request.body.login;
+                newUser.login = ctx.request.body.login;
+                ctx.redirect('/');
+            }
         } catch(err) {
             console.error(err);
             ctx.body = {
@@ -28,6 +48,7 @@ router.post('/reg',
                 message: 'This is not image file'
             }
         }
-}, upload.single('image'));
+
+});
 
 module.exports = router;
