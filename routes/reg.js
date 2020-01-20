@@ -12,6 +12,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage: storage});
+
 router.get('/test', async ctx => {
     ctx.render('home');
 });
