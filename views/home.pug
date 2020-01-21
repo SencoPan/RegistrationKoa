@@ -2,10 +2,12 @@ doctype html
 head
     block title
     block links
+    link(rel='stylesheet' type='text/css' href="../sass/nav.css")
 body
-    a(href='/reg')
-        button Sign Up
-    a(href='/card-file')
-        button Card-file
+    .nav-sensible
+        a(href='/reg')
+            button Sign Up
+        a(href='/cardFile')
+            button Card-file
     block content
 block scripts

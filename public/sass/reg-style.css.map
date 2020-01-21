@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["reg-style.sass"],"names":[],"mappings":"AAIA;EACE;;;AAEA;EACE;EACA;EACA,WAVgB;;AAWhB;EACE;EACA;EACA;;AACA;EACE,YAfc;;AAgBhB;EACE,WAhBmB;EAiBnB,YAlBc","file":"reg-style.css"}
+{"version":3,"sourceRoot":"","sources":["reg-style.sass"],"names":[],"mappings":"AAKA;EACE;;;AACF;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE,WAlBY;;AAmBZ;EACE;;AAEN;EACE;EACA;EACA,WA1BgB;;AA4BhB;EACE;EACA;EACA;;AAEA;EACE,YAhCc;;AAkChB;EACE,WAlCmB;EAmCnB,YApCc","file":"reg-style.css"}

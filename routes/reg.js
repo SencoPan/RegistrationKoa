@@ -47,7 +47,7 @@ router.post('/reg', upload.single('image'), async (ctx) => {
     }
 
     if (typeof emptyFields !== 'undefined' && emptyFields.length > 0){
-        ctx.render('registration', {messages: emptyFields});
+        await ctx.render('registration', {messages: emptyFields});
         return;
     }
 
@@ -66,20 +66,7 @@ router.post('/reg', upload.single('image'), async (ctx) => {
                 ctx.body = { status: 'error' };
             }
         })(ctx)
-        }
-    );
-
-/*router.post('/reg', upload.single('image'),
-    async (ctx, next) => {
-        try{
-            console.log('Complete');
-        } catch(err) {
-            console.error(err);
-            ctx.body = {
-                success: false,
-                message: 'Error'
-            }
-        }
-});*/
+    }
+);
 
 module.exports = router;

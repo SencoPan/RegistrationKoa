@@ -2,6 +2,23 @@ body {
   font-family: monospace;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.content .error-messages {
+  border: double darkgrey;
+  color: red;
+  max-width: 40em;
+}
+.content .error-messages .message {
+  font-size: 1.2em;
+}
+.content .error-messages .message:not(:last-child) {
+  margin-bottom: 1em;
+}
 .content .form-adjust {
   display: flex;
   justify-content: center;

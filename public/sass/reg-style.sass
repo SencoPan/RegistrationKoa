@@ -1,20 +1,39 @@
 $default-text-size: 2em
+$error-text-size: 1.2em
 $default-form-margin: .3em
 $default-button-text-size: .7em
 
 body
   font-family: monospace
 .content
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+  .error-messages
+    border: double darkgrey
+    color: red
+    max-width: 40em
+
+    .message
+      font-size: $error-text-size
+      &:not(:last-child)
+        margin-bottom: 1em
+
   .form-adjust
     display: flex
     justify-content: center
     font-size: $default-text-size
+
     form
       display: flex
       flex-direction: column
       min-width: 10em
+
       label
         margin-top: $default-form-margin
+
       button
         font-size: $default-button-text-size
         margin-top: $default-form-margin

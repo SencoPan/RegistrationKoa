@@ -1,3 +1,9 @@
 doctype html!
-h2 Page was not found
-    h1 #{status}
+header
+    title Error occured
+    link(rel='stylesheet' type='text/css' href="../sass/error.css")
+body
+    .adjust-error
+        h1 #{status}
+        hr
+        h2 #{message}

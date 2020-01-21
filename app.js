@@ -19,6 +19,7 @@ mongoose.connect('mongodb://localhost:27017/registration');
 
 const homeRoute = require('./routes/home');
 const regRoute = require('./routes/reg');
+const cardRoute = require('./routes/cardFile');
 const errRoute = require('./routes/errors');
 
 const app = new Koa();
@@ -61,6 +62,7 @@ app.use(serve(`${__dirname}/public`));
 
 app.use(homeRoute.routes());
 app.use(regRoute.routes());
+app.use(cardRoute.routes());
 app.use(errRoute.routes());
 
 app.listen(3000, function(){
