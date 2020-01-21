@@ -46,6 +46,8 @@ router.post('/reg', upload.single('image'), async (ctx) => {
         }
     }
 
+    if (ctx.file === undefined) emptyFields.push("Photo of profile is not ulpoaded.");
+
     if (typeof emptyFields !== 'undefined' && emptyFields.length > 0){
         await ctx.render('registration', {messages: emptyFields});
         return;

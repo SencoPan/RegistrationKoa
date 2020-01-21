@@ -1,0 +1,18 @@
+extends home
+
+block links
+    link(rel='stylesheet' type='text/css' href='../sass/profile-views.css')
+    link(rel='stylesheet' type='text/css' href='../sass/profile-view.css')
+
+block content
+    .content
+        .row-four
+            .user-block.user-block-single
+                .profile-photo
+                    img(src='../uploads/' + user.image)
+                .profile-info
+                    - const iterableUser= {"Name" : user.login, "E-mail" : user.email, "Specialism" : user.specialism, "Sex": user.sex}
+                       each line, name in iterableUser
+                           p.info-line
+                               b #{name} :
+                               | &nbsp; #{line}

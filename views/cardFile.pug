@@ -4,18 +4,22 @@ block title
     title Card File
 
 block links
-
+    link(rel='stylesheet' type='text/css' href='../sass/profile-views.css')
 
 block content
     .content
-        if ( users !== undefined)
-            each user in users
-                - const iterableUser= {"Name" : user.login, "E-mail" : user.email, "Specialism" : user.specialism, "Sex": user.sex}
-                .user-block
-                    .profile-photo
-                        img(src='../uploads/' + user.image)
-                    .profile-info
-                        each line, name in iterableUser
-                            p.info-line
-                                b #{name}:
-                                | &nbsp; #{line}
+        if ( users.length > 0 && users !== undefined)
+            - for(let i = 0; i < Math.ceil(users.length / 4); i++)
+                    .row-four
+                        - for(let x = 0; x < 4; x++)
+                                if(users[i*4+x] !== "" && users[i * 4 + x] !== undefined)
+                                    - const iterableUser= {"Name" : users[i*4+x].login, "E-mail" : users[i*4+x].email, "Specialism" : users[i*4+x].specialism, "Sex": users[i*4+x].sex}
+                                     a(href="/cardFile/" + users[i*4+x]._id)
+                                        .user-block
+                                            .profile-photo
+                                                img(src='../uploads/' + users[i*4+x].image)
+                                            .profile-info
+                                                each line, name in iterableUser
+                                                    p.info-line
+                                                        b #{name} :
+                                                        | &nbsp; #{line}
